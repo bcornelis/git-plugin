@@ -8,5 +8,8 @@
         <f:entry title="${%Name mapping}" field="nameMapping">
             <f:textbox/>
         </f:entry>
+        <f:entry title="${%Remote}" field="remoteNamePlaceholder">
+            <f:textbox/>
+        </f:entry>
     </f:advanced>
 </j:jelly>

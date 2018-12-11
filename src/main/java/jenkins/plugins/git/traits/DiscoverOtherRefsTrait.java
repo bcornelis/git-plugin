@@ -45,6 +45,7 @@ public class DiscoverOtherRefsTrait extends SCMSourceTrait {
 
     private final String ref;
     private String nameMapping;
+    private String remoteNamePlaceholder;
 
     @DataBoundConstructor
     public DiscoverOtherRefsTrait(String ref) {
@@ -53,6 +54,7 @@ public class DiscoverOtherRefsTrait extends SCMSourceTrait {
         }
         this.ref = StringUtils.removeStart(StringUtils.removeStart(ref, Constants.R_REFS), "/");
         setDefaultNameMapping();
+        setDefaultRemoteNamePlaceholder();
     }
 
     //for easier testing
@@ -69,7 +71,7 @@ public class DiscoverOtherRefsTrait extends SCMSourceTrait {
         return new StringBuilder("+")
         .append(Constants.R_REFS).append(ref)
         .append(':').append(Constants.R_REMOTES)
-        .append(REF_SPEC_REMOTE_NAME_PLACEHOLDER_STR)
+        .append(remoteNamePlaceholder)
         .append('/').append(ref).toString();
     }
 
@@ -102,6 +104,10 @@ public class DiscoverOtherRefsTrait extends SCMSourceTrait {
                 this.nameMapping = "other-ref";
             }
         }
+    }
+    
+    private void setDefaultRemoteNamePlaceholder() {
+    	this.remoteNamePlaceholder = REF_SPEC_REMOTE_NAME_PLACEHOLDER_STR;
     }
 
     @Override
